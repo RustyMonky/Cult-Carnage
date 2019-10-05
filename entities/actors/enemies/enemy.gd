@@ -56,5 +56,5 @@ func _on_projectileTimer_timeout():
 func death():
 	var weaponToDrop = load("res://entities/collectibles/weapons/weapon.tscn").instance()
 	weaponToDrop.global_position = self.global_position
-	get_parent().add_child(weaponToDrop)
+	get_parent().call_deferred('add_child', weaponToDrop)
 	self.queue_free()

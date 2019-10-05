@@ -1,5 +1,7 @@
 extends Area2D
 
+onready var sprite = $sprite
+
 var direction = Vector2(0,0)
 var speed = null
 
@@ -14,6 +16,5 @@ func _process(delta):
 		self.queue_free()
 
 func _on_projectile_body_entered(body):
-	if body.is_in_group("player"):
-		body.takeDamage()
-		self.queue_free()
+	body.takeDamage()
+	self.queue_free()
