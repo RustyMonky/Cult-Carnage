@@ -12,6 +12,10 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_timer_timeout():
+	if !get_parent().has_node("player"):
+		timer.stop()
+		return
+
 	randomize()
 
 	var spawn = load("res://entities/actors/enemies/enemy.tscn").instance()
