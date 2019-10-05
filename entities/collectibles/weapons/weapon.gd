@@ -1,7 +1,7 @@
 extends Area2D
 
 var ammo = {
-	'count': 5,
+	'count': 10,
 	'type': 'test-projectile'
 }
 

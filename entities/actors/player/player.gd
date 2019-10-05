@@ -1,7 +1,7 @@
 extends "res://entities/actors/actor.gd"
 
-onready var equippedWeapon = $canvas/hbox/icon
-onready var equippedWeaponAmmoCount = $canvas/hbox/ammo
+onready var equippedWeapon = $canvas/centerBox/hbox/icon
+onready var equippedWeaponAmmoCount = $canvas/centerBox/hbox/ammo
 onready var punchRaycast = $rayPunch
 onready var sprite = $sprite
 
@@ -96,7 +96,7 @@ func fire():
 	equippedWeaponAmmoCount.set_text("x" + String(inventory[currentWeaponIndex].ammo.count))
 
 func swapWeapons():
-	var weaponTexture = load("res://assets/collectibles/weapons/" + inventory[currentWeaponIndex].type + ".png")
+	var weaponTexture = load("res://assets/gui/equipped/equipped-" + inventory[currentWeaponIndex].type + ".png")
 	equippedWeapon.set_texture(weaponTexture)
 	if currentWeaponIndex == 0:
 		equippedWeaponAmmoCount.set_text("")

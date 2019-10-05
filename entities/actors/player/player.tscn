@@ -2,7 +2,7 @@
 
 [ext_resource path="res://entities/actors/player/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/actors/player/player-test.png" type="Texture" id=2]
-[ext_resource path="res://assets/collectibles/weapons/punch.png" type="Texture" id=3]
+[ext_resource path="res://assets/gui/equipped/equipped-punch.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.59078
@@ -25,21 +25,26 @@ cast_to = Vector2( 8, 0 )
 
 [node name="canvas" type="CanvasLayer" parent="."]
 
-[node name="hbox" type="HBoxContainer" parent="canvas"]
-margin_top = 140.0
-margin_right = 20.0
-margin_bottom = 156.0
-alignment = 1
+[node name="centerBox" type="MarginContainer" parent="canvas"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -20.0
+margin_right = 40.0
 
-[node name="icon" type="TextureRect" parent="canvas/hbox"]
+[node name="hbox" type="HBoxContainer" parent="canvas/centerBox"]
+margin_right = 30.0
+margin_bottom = 20.0
+
+[node name="icon" type="TextureRect" parent="canvas/centerBox/hbox"]
 margin_right = 16.0
-margin_bottom = 16.0
+margin_bottom = 20.0
 texture = ExtResource( 3 )
 stretch_mode = 3
 
-[node name="ammo" type="Label" parent="canvas/hbox"]
+[node name="ammo" type="Label" parent="canvas/centerBox/hbox"]
 margin_left = 20.0
-margin_top = 1.0
+margin_top = 3.0
 margin_right = 20.0
-margin_bottom = 15.0
+margin_bottom = 17.0
 align = 1
