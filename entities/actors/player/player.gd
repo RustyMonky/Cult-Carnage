@@ -10,6 +10,7 @@ var inventory = [{'type': 'punch'}]
 
 func _ready():
 	speed = 64
+	hp = 5
 
 func _input(event):
 	if event.is_action_pressed("player_attack"):
@@ -32,6 +33,7 @@ func _input(event):
 		swapWeapons()
 
 func _physics_process(delta):
+	punchRaycast.look_at(get_global_mouse_position())
 	sprite.look_at(get_global_mouse_position())
 
 	if Input.is_action_pressed("player_up"):
@@ -65,6 +67,7 @@ func addToInventory(weaponData):
 	for weapon in inventory:
 		if weapon.type == weaponData.type:
 			weapon.ammo.count += weaponData.ammo.count
+			equippedWeaponAmmoCount.set_text("x" + String(inventory[currentWeaponIndex].ammo.count))
 			return
 
 	inventory.append(weaponData)
@@ -76,6 +79,9 @@ func addToInventory(weaponData):
 
 # Eventually, this will need to support multiple projectile types
 func fire():
+	if inventory[currentWeaponIndex].ammo.count == 0:
+		return
+
 	var projectile = load("res://entities/projectiles/projectile.tscn").instance()
 	var projectileTexture = load("res://assets/projectiles/" + inventory[currentWeaponIndex].ammo.type + ".png")
 
@@ -86,10 +92,13 @@ func fire():
 	projectile.collision_mask = 1 # This will allow it to collide with enemies!
 
 	get_parent().add_child(projectile)
+	inventory[currentWeaponIndex].ammo.count -= 1
+	equippedWeaponAmmoCount.set_text("x" + String(inventory[currentWeaponIndex].ammo.count))
 
 func swapWeapons():
 	var weaponTexture = load("res://assets/collectibles/weapons/" + inventory[currentWeaponIndex].type + ".png")
 	equippedWeapon.set_texture(weaponTexture)
 	if currentWeaponIndex == 0:
+		equippedWeaponAmmoCount.set_text("")
 		return
 	equippedWeaponAmmoCount.set_text("x" + String(inventory[currentWeaponIndex].ammo.count))
