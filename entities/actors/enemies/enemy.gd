@@ -6,13 +6,16 @@ const spriteSize = 16
 
 var currentState = null
 
+onready var animationPlayer = $animationPlayer
 onready var projectileTimer = $projectileTimer
 onready var spawnPosition = self.position
+onready var sprite = $sprite
 
 func _ready():
 	currentState = state.enter
 	hp = 1
 	speed = 32
+	look_at(get_parent().get_node("player").get_global_position())
 
 	projectileTimer.set_wait_time(2.00)
 
@@ -51,6 +54,7 @@ func _on_projectileTimer_timeout():
 	projectile.direction = self.position.direction_to(get_parent().get_node("player").get_global_position())
 	projectile.position = self.position
 	get_parent().add_child(projectile)
+	animationPlayer.play("test-enemy-fire")
 
 # Enemy death logic, which can contain item drops or hazards
 func death():
