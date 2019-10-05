@@ -30,7 +30,3 @@ func _physics_process(delta):
 		move(delta)
 	else:
 		direction.x = 0
-
-
-func move(delta):
-	self.move_and_collide(direction.normalized() * (speed * delta))
