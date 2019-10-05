@@ -1,6 +1,9 @@
 extends "res://entities/actors/actor.gd"
 
+onready var equippedWeapon = $canvas/hbox/icon
+onready var equippedWeaponAmmoCount = $canvas/hbox/ammo
 onready var punchRaycast = $rayPunch
+onready var sprite = $sprite
 
 var currentWeaponIndex = 0
 var inventory = [{'type': 'punch'}]
@@ -20,14 +23,16 @@ func _input(event):
 		if currentWeaponIndex == 0:
 			return
 		currentWeaponIndex -= 1
+		swapWeapons()
 
 	elif event.is_action_pressed("player_scroll_right"):
 		if currentWeaponIndex == inventory.size() -1:
 			return
 		currentWeaponIndex += 1
+		swapWeapons()
 
 func _physics_process(delta):
-	look_at(get_global_mouse_position())
+	sprite.look_at(get_global_mouse_position())
 
 	if Input.is_action_pressed("player_up"):
 		direction.y = -1
@@ -67,6 +72,7 @@ func addToInventory(weaponData):
 	# If currently punching, equip the gun
 	if currentWeaponIndex == 0 && inventory.size() == 2:
 		currentWeaponIndex = 1
+		swapWeapons()
 
 # Eventually, this will need to support multiple projectile types
 func fire():
@@ -80,3 +86,10 @@ func fire():
 	projectile.collision_mask = 1 # This will allow it to collide with enemies!
 
 	get_parent().add_child(projectile)
+
+func swapWeapons():
+	var weaponTexture = load("res://assets/collectibles/weapons/" + inventory[currentWeaponIndex].type + ".png")
+	equippedWeapon.set_texture(weaponTexture)
+	if currentWeaponIndex == 0:
+		return
+	equippedWeaponAmmoCount.set_text("x" + String(inventory[currentWeaponIndex].ammo.count))
