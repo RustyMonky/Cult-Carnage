@@ -2,6 +2,7 @@ extends "res://entities/actors/actor.gd"
 
 onready var equippedWeapon = $canvas/centerBox/hbox/icon
 onready var equippedWeaponAmmoCount = $canvas/centerBox/hbox/ammo
+onready var hpBar = $canvas/centerBox/hbox/hp
 onready var punchRaycast = $rayPunch
 onready var sprite = $sprite
 
@@ -11,6 +12,9 @@ var inventory = [{'type': 'punch'}]
 func _ready():
 	speed = 64
 	hp = 5
+	hpBar.max_value = hp
+	hpBar.value = hp
+
 
 func _input(event):
 	if event.is_action_pressed("player_attack"):
@@ -102,3 +106,7 @@ func swapWeapons():
 		equippedWeaponAmmoCount.set_text("")
 		return
 	equippedWeaponAmmoCount.set_text("x" + String(inventory[currentWeaponIndex].ammo.count))
+
+func takeDamage():
+	.takeDamage()
+	hpBar.value = hp

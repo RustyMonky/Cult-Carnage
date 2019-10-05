@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://entities/actors/player/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/actors/player/player-test.png" type="Texture" id=2]
-[ext_resource path="res://assets/gui/equipped/equipped-punch.png" type="Texture" id=3]
+[ext_resource path="res://assets/gui/hp/hp-under.png" type="Texture" id=3]
+[ext_resource path="res://assets/gui/hp/hp-over.png" type="Texture" id=4]
+[ext_resource path="res://assets/gui/hp/hp-progress.png" type="Texture" id=5]
+[ext_resource path="res://assets/gui/equipped/equipped-punch.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.59078
@@ -33,18 +36,28 @@ margin_top = -20.0
 margin_right = 40.0
 
 [node name="hbox" type="HBoxContainer" parent="canvas/centerBox"]
-margin_right = 30.0
+margin_right = 40.0
 margin_bottom = 20.0
 
-[node name="icon" type="TextureRect" parent="canvas/centerBox/hbox"]
+[node name="hp" type="TextureProgress" parent="canvas/centerBox/hbox"]
 margin_right = 16.0
 margin_bottom = 20.0
-texture = ExtResource( 3 )
+max_value = 5.0
+texture_under = ExtResource( 3 )
+texture_over = ExtResource( 4 )
+texture_progress = ExtResource( 5 )
+fill_mode = 3
+
+[node name="icon" type="TextureRect" parent="canvas/centerBox/hbox"]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 20.0
+texture = ExtResource( 6 )
 stretch_mode = 3
 
 [node name="ammo" type="Label" parent="canvas/centerBox/hbox"]
-margin_left = 20.0
+margin_left = 40.0
 margin_top = 3.0
-margin_right = 20.0
+margin_right = 40.0
 margin_bottom = 17.0
 align = 1
