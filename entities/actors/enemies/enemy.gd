@@ -11,7 +11,10 @@ onready var spawnPosition = self.position
 
 func _ready():
 	currentState = state.enter
+	hp = 1
 	speed = 32
+
+	projectileTimer.set_wait_time(2.00)
 
 func _physics_process(delta):
 	if currentState == state.enter:
@@ -48,3 +51,10 @@ func _on_projectileTimer_timeout():
 	projectile.direction = self.position.direction_to(get_parent().get_node("player").get_global_position())
 	projectile.position = self.position
 	get_parent().add_child(projectile)
+
+# Enemy death logic, which can contain item drops or hazards
+func death():
+	var weaponToDrop = load("res://entities/collectibles/weapons/weapon.tscn").instance()
+	weaponToDrop.global_position = self.global_position
+	get_parent().add_child(weaponToDrop)
+	self.queue_free()

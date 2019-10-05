@@ -2,6 +2,8 @@ extends "res://entities/actors/actor.gd"
 
 onready var punchRaycast = $rayPunch
 
+var inventory = []
+
 func _ready():
 	speed = 64
 
@@ -30,3 +32,12 @@ func _physics_process(delta):
 		move(delta)
 	else:
 		direction.x = 0
+
+# Logic to add ammo and weapons to the player's inventory
+func addToInventory(weaponData):
+	for weapon in inventory:
+		if weapon.type == weaponData.type:
+			weapon.ammo.count += weaponData.ammo.count
+			return
+
+	inventory.append(weaponData)
