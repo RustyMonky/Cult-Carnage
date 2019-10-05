@@ -54,7 +54,12 @@ func _on_projectileTimer_timeout():
 
 # Enemy death logic, which can contain item drops or hazards
 func death():
-	var weaponToDrop = load("res://entities/collectibles/weapons/weapon.tscn").instance()
-	weaponToDrop.global_position = self.global_position
-	get_parent().call_deferred('add_child', weaponToDrop)
+	randomize()
+
+	var randomChance = int(rand_range(0, 2))
+	if randomChance > 0:
+		var weaponToDrop = load("res://entities/collectibles/weapons/weapon.tscn").instance()
+		weaponToDrop.global_position = self.global_position
+		get_parent().call_deferred('add_child', weaponToDrop)
+
 	self.queue_free()
