@@ -1,5 +1,6 @@
 extends "res://entities/actors/actor.gd"
 
+onready var animationPlayer = $animationPlayer
 onready var equippedWeapon = $canvas/centerBox/hbox/icon
 onready var equippedWeaponAmmoCount = $canvas/centerBox/hbox/ammo
 onready var hpBar = $canvas/centerBox/hbox/hp
@@ -19,6 +20,12 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("player_attack"):
 		if currentWeaponIndex == 0: # Index 0 will always be the starting punch weapon
+
+			if animationPlayer.is_playing():
+				return
+			else:
+				animationPlayer.play("punch")
+
 			if punchRaycast.is_colliding() && punchRaycast.get_collider().is_in_group("enemies"):
 				punchRaycast.get_collider().takeDamage()
 		else:
@@ -110,3 +117,6 @@ func swapWeapons():
 func takeDamage():
 	.takeDamage()
 	hpBar.value = hp
+
+func _on_animationPlayer_animation_finished(anim_name):
+	animationPlayer.stop()
