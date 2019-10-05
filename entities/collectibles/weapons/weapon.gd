@@ -6,7 +6,7 @@ var ammo = {
 }
 
 var weaponData = {
-	'type': 'test-weapon',
+	'type': 'test-gun',
 	'ammo': ammo
 }
 

@@ -31,18 +31,26 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("player_up"):
 		direction.y = -1
+		if self.position.y - 8 <= 0:
+			direction.y = 0
 		move(delta)
 	elif Input.is_action_pressed("player_down"):
 		direction.y = 1
+		if self.position.y + 8 >= get_parent().get_node("viewport").size.y:
+			direction.y = 0
 		move(delta)
 	else:
 		direction.y = 0
 
 	if Input.is_action_pressed("player_left"):
 		direction.x = -1
+		if self.global_position.x - 8 <= 0:
+			direction.x = 0
 		move(delta)
 	elif Input.is_action_pressed("player_right"):
 		direction.x = 1
+		if self.global_position.x + 8 >= get_parent().get_node("viewport").size.x:
+			direction.x = 0
 		move(delta)
 	else:
 		direction.x = 0
