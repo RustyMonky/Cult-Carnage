@@ -1,5 +1,9 @@
 extends KinematicBody2D
 
+# Stats
+var hp = 3 # Just a default number to ensure takeDamage() works. It will be overriden by child classes.
+
+# Movement
 var direction = Vector2()
 var speed = null
 
@@ -24,3 +28,9 @@ func fire():
 # Generic movement logic for actors
 func move(delta):
 	pass
+
+# Generic logic for actors to receive damage
+func takeDamage():
+	hp -= 1
+	if (hp <= 0):
+		death()

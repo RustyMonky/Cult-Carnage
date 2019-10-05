@@ -16,4 +16,5 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="rayPunch" type="RayCast2D" parent="."]
+enabled = true
 cast_to = Vector2( 8, 0 )
