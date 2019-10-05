@@ -16,6 +16,16 @@ func _input(event):
 		else:
 			fire()
 
+	if event.is_action_pressed("player_scroll_left"):
+		if currentWeaponIndex == 0:
+			return
+		currentWeaponIndex -= 1
+
+	elif event.is_action_pressed("player_scroll_right"):
+		if currentWeaponIndex == inventory.size() -1:
+			return
+		currentWeaponIndex += 1
+
 func _physics_process(delta):
 	look_at(get_global_mouse_position())
 
