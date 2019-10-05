@@ -82,6 +82,7 @@ func addToInventory(weaponData):
 			return
 
 	inventory.append(weaponData)
+	sprite.set_frame(sprite.hframes * currentWeaponIndex)
 
 	# If currently punching, equip the gun
 	if currentWeaponIndex == 0 && inventory.size() == 2:
@@ -106,9 +107,13 @@ func fire():
 	inventory[currentWeaponIndex].ammo.count -= 1
 	equippedWeaponAmmoCount.set_text("x" + String(inventory[currentWeaponIndex].ammo.count))
 
+	animationPlayer.play("fire-" + inventory[currentWeaponIndex].type)
+
 func swapWeapons():
 	var weaponTexture = load("res://assets/gui/equipped/equipped-" + inventory[currentWeaponIndex].type + ".png")
 	equippedWeapon.set_texture(weaponTexture)
+	sprite.set_frame(sprite.hframes * currentWeaponIndex)
+
 	if currentWeaponIndex == 0:
 		equippedWeaponAmmoCount.set_text("")
 		return
