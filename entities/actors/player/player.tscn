@@ -28,8 +28,9 @@ region_rect = Rect2( 10, 10, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="rayPunch" type="RayCast2D" parent="."]
+scale = Vector2( 1, 4 )
 enabled = true
-cast_to = Vector2( 8, 0 )
+cast_to = Vector2( 16, 0 )
 
 [node name="canvas" type="CanvasLayer" parent="."]
 editor/display_folded = true

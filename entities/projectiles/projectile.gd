@@ -6,7 +6,7 @@ var direction = Vector2(0,0)
 var speed = null
 
 func _ready():
-	speed = 64
+	speed = 32
 	set_process(true)
 
 func _process(delta):

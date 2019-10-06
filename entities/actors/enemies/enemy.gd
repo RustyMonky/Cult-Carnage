@@ -10,10 +10,12 @@ onready var animationPlayer = $animationPlayer
 onready var projectileTimer = $projectileTimer
 onready var spawnPosition = self.position
 onready var sprite = $sprite
+onready var silhuoette = $silhouette
+onready var tween = $tween
 
 func _ready():
 	currentState = state.enter
-	hp = 1
+	hp = 2
 	speed = 32
 	look_at(get_parent().get_node("player").get_global_position())
 
@@ -67,3 +69,9 @@ func death():
 		get_parent().call_deferred('add_child', weaponToDrop)
 
 	self.queue_free()
+
+# In addition to standard logic, blink the sprite white
+func takeDamage():
+	.takeDamage()
+	tween.interpolate_property(silhuoette, "visible", true, false, 0.3, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	tween.start()

@@ -11,11 +11,10 @@ var currentWeaponIndex = 0
 var inventory = [{'type': 'punch'}]
 
 func _ready():
-	speed = 64
+	speed = 48
 	hp = 5
 	hpBar.max_value = hp
 	hpBar.value = hp
-
 
 func _input(event):
 	if event.is_action_pressed("player_attack"):
@@ -104,6 +103,7 @@ func fire():
 	projectile.collision_mask = 1 # This will allow it to collide with enemies!
 
 	get_parent().add_child(projectile)
+	projectile.speed = 64*4
 	inventory[currentWeaponIndex].ammo.count -= 1
 	equippedWeaponAmmoCount.set_text("x" + String(inventory[currentWeaponIndex].ammo.count))
 

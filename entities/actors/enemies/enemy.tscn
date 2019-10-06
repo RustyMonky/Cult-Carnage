@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://entities/actors/enemies/enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/actors/enemies/enemy-test.png" type="Texture" id=2]
-[ext_resource path="res://assets/animations/enemies/test/test-enemy-fire.tres" type="Animation" id=3]
+[ext_resource path="res://assets/actors/enemies/enemy-test-white-sil.png" type="Texture" id=3]
+[ext_resource path="res://assets/animations/enemies/test/test-enemy-fire.tres" type="Animation" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.9958, 6.02329 )
@@ -18,11 +19,17 @@ texture = ExtResource( 2 )
 hframes = 4
 frame = 1
 
+[node name="silhouette" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 3 )
+
 [node name="collider" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="projectileTimer" type="Timer" parent="."]
 
 [node name="animationPlayer" type="AnimationPlayer" parent="."]
-anims/test-enemy-fire = ExtResource( 3 )
+anims/test-enemy-fire = ExtResource( 4 )
+
+[node name="tween" type="Tween" parent="."]
 [connection signal="timeout" from="projectileTimer" to="." method="_on_projectileTimer_timeout"]
