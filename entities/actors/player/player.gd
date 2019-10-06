@@ -1,5 +1,6 @@
 extends "res://entities/actors/actor.gd"
 
+onready var aliveTimer = $aliveTimer
 onready var equippedWeapon = $canvas/centerBox/hbox/icon
 onready var equippedWeaponAmmoCount = $canvas/centerBox/hbox/ammo
 onready var hpBar = $canvas/centerBox/hbox/hp
@@ -91,6 +92,10 @@ func addToInventory(weaponData):
 	if currentWeaponIndex == 0 && inventory.size() == 2:
 		currentWeaponIndex = 1
 		swapWeapons()
+
+func death(isPlayer = true):
+	aliveTimer.stop()
+	.death(isPlayer)
 
 # Eventually, this will need to support multiple projectile types
 func fire():

@@ -56,7 +56,7 @@ func _on_projectileTimer_timeout():
 	animationPlayer.play("test-enemy-fire")
 
 # Enemy death logic, which can contain item drops or hazards
-func death():
+func death(isPlayer = false):
 	randomize()
 
 	var randomChance = int(rand_range(0, 2))
@@ -66,7 +66,7 @@ func death():
 		get_parent().call_deferred('add_child', weaponToDrop)
 
 	gameData.enemiesKilled += 1
-	.death()
+	.death(isPlayer)
 
 # In addition to standard logic, blink the sprite white
 func takeDamage():
