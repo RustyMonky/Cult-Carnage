@@ -27,7 +27,7 @@ func fire():
 
 # Generic movement logic for actors
 func move(delta):
-	self.move_and_collide(direction.normalized() * (speed * delta))
+	var collision = self.move_and_collide(direction.normalized() * (speed * delta))
 
 # Generic logic for actors to receive damage
 func takeDamage():

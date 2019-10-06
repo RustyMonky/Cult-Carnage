@@ -7,6 +7,8 @@ const spriteSize = 16
 var currentState = null
 
 onready var animationPlayer = $animationPlayer
+onready var collider = $collider
+onready var deathSprite = $death
 onready var projectileTimer = $projectileTimer
 onready var spawnPosition = self.position
 onready var sprite = $sprite
@@ -46,12 +48,14 @@ func _physics_process(delta):
 			projectileTimer.start()
 
 func _on_animationPlayer_animation_finished(anim_name):
+	if anim_name == "death":
+		self.queue_free()
 	animationPlayer.stop()
 
 # Upon timeout, fire a projectile
 # Eventually, enemies will fire specific projectiles. For now, use the test one.
 func _on_projectileTimer_timeout():
-	if !get_parent().has_node("player"):
+	if !get_parent().has_node("player") || self.hp == 0:
 		projectileTimer.stop()
 		return
 
@@ -63,6 +67,10 @@ func _on_projectileTimer_timeout():
 
 # Enemy death logic, which can contain item drops or hazards
 func death():
+	collider.call_deferred("set_disabled", true)
+	deathSprite.call_deferred("set_visible", true)
+	sprite.call_deferred("set_visible", false)
+	silhuoette.call_deferred("set_visible", false)
 	randomize()
 
 	var randomChance = int(rand_range(0, 2))
@@ -72,8 +80,7 @@ func death():
 		get_parent().call_deferred('add_child', weaponToDrop)
 
 	gameData.enemiesKilled += 1
-
-	.death()
+	animationPlayer.play("death")
 
 # In addition to standard logic, blink the sprite white
 func takeDamage():
