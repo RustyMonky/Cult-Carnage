@@ -6,6 +6,7 @@ onready var equippedWeaponAmmoCount = $canvas/centerBox/hbox/ammo
 onready var hpBar = $canvas/centerBox/hbox/hp
 onready var punchRaycast = $rayPunch
 onready var sprite = $sprite
+onready var tween = $tween
 
 var currentWeaponIndex = 0
 var inventory = [{'type': 'punch'}]
@@ -127,7 +128,8 @@ func swapWeapons():
 func takeDamage():
 	.takeDamage()
 	animationPlayer.play("hit")
-	hpBar.value = hp
+	tween.interpolate_property(hpBar, "value", hp + 1, hp, 0.5, Tween.TRANS_BOUNCE, Tween.EASE_OUT, 0)
+	tween.start()
 
 func _on_animationPlayer_animation_finished(anim_name):
 	animationPlayer.stop()
