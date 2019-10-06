@@ -121,6 +121,7 @@ func swapWeapons():
 
 func takeDamage():
 	.takeDamage()
+	animationPlayer.play("hit")
 	hpBar.value = hp
 
 func _on_animationPlayer_animation_finished(anim_name):

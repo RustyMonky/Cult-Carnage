@@ -45,6 +45,9 @@ func _physics_process(delta):
 		if projectileTimer.is_stopped():
 			projectileTimer.start()
 
+func _on_animationPlayer_animation_finished(anim_name):
+	animationPlayer.stop()
+
 # Upon timeout, fire a projectile
 # Eventually, enemies will fire specific projectiles. For now, use the test one.
 func _on_projectileTimer_timeout():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://entities/actors/player/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/actors/player/player-test.png" type="Texture" id=2]
@@ -11,6 +11,22 @@
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 7.2297
+
+[sub_resource type="Animation" id=2]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.67451, 0.196078, 0.196078, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="player" type="KinematicBody2D" groups=[
 "player",
@@ -71,5 +87,6 @@ align = 1
 
 [node name="animationPlayer" type="AnimationPlayer" parent="."]
 anims/fire-test-gun = ExtResource( 7 )
+anims/hit = SubResource( 2 )
 anims/punch = ExtResource( 8 )
 [connection signal="animation_finished" from="animationPlayer" to="." method="_on_animationPlayer_animation_finished"]
