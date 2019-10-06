@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/actors/enemies/blood-splat.png" type="Texture" id=1]
+[ext_resource path="res://entities/actors/death.gd" type="Script" id=2]
+[ext_resource path="res://assets/animations/death.tres" type="Animation" id=3]
+
+[node name="death" type="Sprite"]
+texture = ExtResource( 1 )
+hframes = 5
+script = ExtResource( 2 )
+
+[node name="animationPlayer" type="AnimationPlayer" parent="."]
+anims/death = ExtResource( 3 )
+[connection signal="animation_finished" from="animationPlayer" to="." method="_on_animationPlayer_animation_finished"]

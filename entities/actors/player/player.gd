@@ -1,12 +1,9 @@
 extends "res://entities/actors/actor.gd"
 
-onready var animationPlayer = $animationPlayer
 onready var equippedWeapon = $canvas/centerBox/hbox/icon
 onready var equippedWeaponAmmoCount = $canvas/centerBox/hbox/ammo
 onready var hpBar = $canvas/centerBox/hbox/hp
 onready var punchRaycast = $rayPunch
-onready var sprite = $sprite
-onready var tween = $tween
 
 var currentWeaponIndex = 0
 var inventory = [{'type': 'punch'}]
@@ -18,6 +15,9 @@ func _ready():
 	hpBar.value = hp
 
 func _input(event):
+	if hp <= 0:
+		return
+
 	if event.is_action_pressed("player_attack"):
 		if currentWeaponIndex == 0: # Index 0 will always be the starting punch weapon
 
@@ -44,6 +44,9 @@ func _input(event):
 		swapWeapons()
 
 func _physics_process(delta):
+	if hp <= 0:
+		return
+
 	punchRaycast.look_at(get_global_mouse_position())
 	sprite.look_at(get_global_mouse_position())
 
@@ -89,11 +92,6 @@ func addToInventory(weaponData):
 		currentWeaponIndex = 1
 		swapWeapons()
 
-func death():
-	print(gameData.enemiesKilled)
-	print(gameData.timeAlive)
-	.death()
-
 # Eventually, this will need to support multiple projectile types
 func fire():
 	if inventory[currentWeaponIndex].ammo.count == 0:
@@ -130,9 +128,6 @@ func takeDamage():
 	animationPlayer.play("hit")
 	tween.interpolate_property(hpBar, "value", hp + 1, hp, 0.5, Tween.TRANS_BOUNCE, Tween.EASE_OUT, 0)
 	tween.start()
-
-func _on_animationPlayer_animation_finished(anim_name):
-	animationPlayer.stop()
 
 func _on_aliveTimer_timeout():
 	gameData.timeAlive += 1.00

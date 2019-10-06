@@ -1,5 +1,10 @@
 extends KinematicBody2D
 
+onready var animationPlayer = $animationPlayer
+onready var collider = $collider
+onready var sprite = $sprite
+onready var tween = $tween
+
 # Stats
 var hp = 3 # Just a default number to ensure takeDamage() works. It will be overriden by child classes.
 
@@ -17,8 +22,14 @@ func _input(event):
 func _physics_process(delta):
 	pass
 
+func _on_animationPlayer_animation_finished(anim_name):
+	animationPlayer.stop()
+
 # Generic death logic for actors
 func death():
+	var bloodSplat = load("res://entities/actors/death.tscn").instance()
+	bloodSplat.global_position = self.global_position
+	get_parent().call_deferred("add_child", bloodSplat)
 	self.queue_free()
 
 # Generic projectile fire logic for actors

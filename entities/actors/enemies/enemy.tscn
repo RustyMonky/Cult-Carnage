@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://entities/actors/enemies/enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/actors/enemies/enemy-test.png" type="Texture" id=2]
 [ext_resource path="res://assets/actors/enemies/enemy-test-white-sil.png" type="Texture" id=3]
-[ext_resource path="res://assets/animations/death.tres" type="Animation" id=4]
-[ext_resource path="res://assets/animations/enemies/test/test-enemy-fire.tres" type="Animation" id=5]
-[ext_resource path="res://assets/actors/enemies/blood-splat.png" type="Texture" id=6]
+[ext_resource path="res://assets/animations/enemies/test/test-enemy-fire.tres" type="Animation" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.9958, 6.02329 )
@@ -31,14 +29,8 @@ shape = SubResource( 1 )
 [node name="projectileTimer" type="Timer" parent="."]
 
 [node name="animationPlayer" type="AnimationPlayer" parent="."]
-anims/death = ExtResource( 4 )
-anims/test-enemy-fire = ExtResource( 5 )
+anims/test-enemy-fire = ExtResource( 4 )
 
 [node name="tween" type="Tween" parent="."]
-
-[node name="death" type="Sprite" parent="."]
-visible = false
-texture = ExtResource( 6 )
-hframes = 5
 [connection signal="timeout" from="projectileTimer" to="." method="_on_projectileTimer_timeout"]
 [connection signal="animation_finished" from="animationPlayer" to="." method="_on_animationPlayer_animation_finished"]
