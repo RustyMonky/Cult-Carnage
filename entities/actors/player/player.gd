@@ -111,6 +111,7 @@ func fire():
 	projectile.get_node("sprite").set_texture(projectileTexture)
 	projectile.collision_layer = 2 # This will allow it to collide with enemies!
 	projectile.collision_mask = 1 # This will allow it to collide with enemies!
+	projectile.modulate = Color("#51c43f");
 
 	get_parent().add_child(projectile)
 	projectile.speed = 64*4
