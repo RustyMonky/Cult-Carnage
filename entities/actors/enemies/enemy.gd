@@ -73,10 +73,12 @@ func death():
 
 	gameData.enemiesKilled += 1
 
-	self.queue_free()
+	.death()
 
 # In addition to standard logic, blink the sprite white
 func takeDamage():
-	.takeDamage()
+	# Blink white by toggling silhuoette visibility
 	tween.interpolate_property(silhuoette, "visible", true, false, 0.3, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	tween.start()
+
+	.takeDamage()

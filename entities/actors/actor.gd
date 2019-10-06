@@ -31,6 +31,8 @@ func move(delta):
 
 # Generic logic for actors to receive damage
 func takeDamage():
+	# Shake the screen -- assumes enemy is child of the level root node
+	get_parent().screenShake(1, 2, 100)
 	hp -= 1
 	if (hp <= 0):
 		death()
