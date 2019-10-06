@@ -71,6 +71,8 @@ func death():
 		weaponToDrop.global_position = self.global_position
 		get_parent().call_deferred('add_child', weaponToDrop)
 
+	gameData.enemiesKilled += 1
+
 	self.queue_free()
 
 # In addition to standard logic, blink the sprite white

@@ -88,6 +88,11 @@ func addToInventory(weaponData):
 		currentWeaponIndex = 1
 		swapWeapons()
 
+func death():
+	print(gameData.enemiesKilled)
+	print(gameData.timeAlive)
+	.death()
+
 # Eventually, this will need to support multiple projectile types
 func fire():
 	if inventory[currentWeaponIndex].ammo.count == 0:
@@ -126,3 +131,6 @@ func takeDamage():
 
 func _on_animationPlayer_animation_finished(anim_name):
 	animationPlayer.stop()
+
+func _on_aliveTimer_timeout():
+	gameData.timeAlive += 1.00
