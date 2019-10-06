@@ -93,9 +93,10 @@ func addToInventory(weaponData):
 		currentWeaponIndex = 1
 		swapWeapons()
 
-func death(isPlayer = true):
+func death():
+	gameData.playerAlive = false
 	aliveTimer.stop()
-	.death(isPlayer)
+	.death()
 
 # Eventually, this will need to support multiple projectile types
 func fire():

@@ -10,4 +10,7 @@ func _ready():
 
 func _on_animationPlayer_animation_finished(anim_name):
 	if anim_name == "death":
-		self.queue_free()
+		if !gameData.playerAlive:
+			sceneManager.goto_scene("res://levels/gameover/gameover.tscn")
+		else:
+			self.queue_free()

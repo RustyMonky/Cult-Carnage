@@ -26,15 +26,12 @@ func _on_animationPlayer_animation_finished(anim_name):
 	animationPlayer.stop()
 
 # Generic death logic for actors
-func death(isPlayer = false):
+func death():
 	var bloodSplat = load("res://entities/actors/death.tscn").instance()
 	bloodSplat.global_position = self.global_position
 	get_parent().call_deferred("add_child", bloodSplat)
 
-	if isPlayer:
-		sceneManager.goto_scene("res://levels/gameover/gameover.tscn")
-	else:
-		self.queue_free()
+	self.queue_free()
 
 # Generic projectile fire logic for actors
 func fire():
