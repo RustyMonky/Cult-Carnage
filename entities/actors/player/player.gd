@@ -11,7 +11,7 @@ var currentWeaponIndex = 0
 var inventory = [{'type': 'punch'}]
 
 func _ready():
-	cbox.modulate = Color(1, 1, 1, 0.5)
+	cbox.modulate = Color(1, 1, 1, 0.7)
 	speed = 48
 	hp = 5
 	hpBar.max_value = hp
