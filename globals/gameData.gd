@@ -15,3 +15,9 @@ var secondsAlive = 0.00
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+
+func reset():
+	enemiesKilled = 0
+	minutesAlive = 0.00
+	playerAlive = true
+	secondsAlive = 0.00

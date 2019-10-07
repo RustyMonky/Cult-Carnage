@@ -102,7 +102,8 @@ margin_right = 37.0
 margin_bottom = 16.5
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.988235, 0.976471, 0.376471, 1 )
-text = "No ammo!"
+text = "No ammo!
+Use Q or E"
 align = 1
 valign = 1
 
