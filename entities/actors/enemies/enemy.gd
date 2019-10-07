@@ -10,6 +10,7 @@ var droppedWeaponType
 var usedProjectile
 
 onready var projectileTimer = $projectileTimer
+onready var enemyRay = $enemyRay
 onready var spawnPosition = self.position
 onready var silhuoette = $silhouette
 
@@ -26,7 +27,9 @@ func _ready():
 
 func _physics_process(delta):
 	if currentState == state.enter:
-		if direction.x == 1 && self.position.x >= (spawnPosition.x + spriteSize * 2):
+		if enemyRay.is_colliding() && enemyRay.get_collider().is_in_group('enemies'):
+			return
+		elif direction.x == 1 && self.position.x >= (spawnPosition.x + spriteSize * 2):
 			currentState = state.hunt
 		elif direction.x == -1 && self.position.x <= (spawnPosition.x - spriteSize * 2):
 			currentState = state.hunt
