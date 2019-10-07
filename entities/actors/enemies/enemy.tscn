@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://entities/actors/enemies/enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/actors/enemies/enemy-test.png" type="Texture" id=2]
 [ext_resource path="res://assets/actors/enemies/enemy-test-white-sil.png" type="Texture" id=3]
 [ext_resource path="res://assets/animations/enemies/test/test-enemy-fire.tres" type="Animation" id=4]
+[ext_resource path="res://assets/sounds/hit.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sounds/gun-fire.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.9958, 6.02329 )
@@ -37,5 +39,13 @@ anims/test-enemy-fire = ExtResource( 4 )
 scale = Vector2( 1, 4 )
 enabled = true
 cast_to = Vector2( 16, 0 )
+
+[node name="hitAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -20.0
+
+[node name="fireAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -20.0
 [connection signal="timeout" from="projectileTimer" to="." method="_on_projectileTimer_timeout"]
 [connection signal="animation_finished" from="animationPlayer" to="." method="_on_animationPlayer_animation_finished"]

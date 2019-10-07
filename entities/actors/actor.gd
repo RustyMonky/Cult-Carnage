@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 onready var animationPlayer = $animationPlayer
 onready var collider = $collider
+onready var fireAudio = $fireAudio
+onready var hitAudio = $hitAudio
 onready var sprite = $sprite
 onready var tween = $tween
 
@@ -35,7 +37,7 @@ func death():
 
 # Generic projectile fire logic for actors
 func fire():
-	pass
+	fireAudio.play()
 
 # Generic movement logic for actors
 func move(delta):
@@ -43,6 +45,7 @@ func move(delta):
 
 # Generic logic for actors to receive damage
 func takeDamage():
+	hitAudio.play()
 	# Shake the screen -- assumes enemy is child of the level root node
 	get_parent().screenShake(1, 2, 100)
 	hp -= 1

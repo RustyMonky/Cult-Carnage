@@ -73,6 +73,7 @@ func fire():
 	if !get_parent().has_node("player") || self.hp == 0:
 		projectileTimer.stop()
 		return
+	.fire()
 
 	var projectile = load(usedProjectile).instance()
 	projectile.direction = self.position.direction_to(get_parent().get_node("player").get_global_position())

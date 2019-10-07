@@ -105,6 +105,7 @@ func death():
 func fire():
 	if inventory[currentWeaponIndex].ammo.count == 0:
 		return
+	.fire()
 
 	var projectile = load("res://entities/projectiles/projectile.tscn").instance()
 	var projectileTexture = load("res://assets/projectiles/" + inventory[currentWeaponIndex].ammo.type + ".png")
