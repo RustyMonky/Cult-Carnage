@@ -79,7 +79,8 @@ func fire():
 	projectile.direction = self.position.direction_to(get_parent().get_node("player").get_global_position())
 	projectile.position = self.position
 	get_parent().add_child(projectile)
-	animationPlayer.play("test-enemy-fire")
+	if droppedWeaponType == 'test-gun':
+		animationPlayer.play("test-enemy-fire")
 
 # In addition to standard logic, blink the sprite white
 func takeDamage():

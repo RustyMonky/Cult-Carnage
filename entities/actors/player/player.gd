@@ -145,4 +145,7 @@ func takeDamage():
 	tween.start()
 
 func _on_aliveTimer_timeout():
-	gameData.timeAlive += 1.00
+	if gameData.secondsAlive + 1 == 60:
+		gameData.minutesAlive += 1.00
+	else:
+		gameData.secondsAlive += 1.00
