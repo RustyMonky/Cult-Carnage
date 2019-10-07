@@ -17,8 +17,9 @@ func _on_timer_timeout():
 		return
 
 	randomize()
+	var enemyToLoad = int(rand_range(0, gameData.enemies.size()))
 
-	var spawn = load("res://entities/actors/enemies/enemy.tscn").instance()
+	var spawn = load(gameData.enemies[enemyToLoad].path).instance()
 	var spawnHeight = int(rand_range(spriteSize, viewport.size.y - spriteSize * 2))
 	var spawnWidth = int(rand_range(spriteSize, viewport.size.x - spriteSize * 2))
 

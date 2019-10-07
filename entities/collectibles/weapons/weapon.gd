@@ -1,17 +1,35 @@
 extends Area2D
 
-var ammo = {
-	'count': 10,
-	'type': 'test-projectile'
-}
+onready var sprite = $sprite
 
-var weaponData = {
-	'type': 'test-gun',
-	'ammo': ammo
-}
+var type
+var weapons = [
+	{
+		'type': 'test-gun',
+		'ammo': {
+			'count': 10,
+			'type': 'test-projectile'
+		},
+		'texture': 'res://assets/collectibles/weapons/test-gun.png'
+	},
+	{
+		'type': 'eye-gun',
+		'ammo': {
+			'count': 5,
+			'type': 'eye-projectile'
+		},
+		'texture': 'res://assets/collectibles/weapons/eye-gun.png'
+	}
+]
+
+var weaponData
 
 func _ready():
-	pass
+	for weapon in weapons:
+		if weapon.type == type:
+			weaponData = weapon
+			var spriteTexture = load(weapon.texture)
+			sprite.set_texture(spriteTexture)
 
 func _on_weapon_body_entered(body):
 	if body.is_in_group("player"):
