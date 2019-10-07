@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://levels/main/main.gd" type="Script" id=1]
 [ext_resource path="res://assets/levels/tiles/tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://entities/actors/player/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/spawner/spawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/music/Final Boss Battle 6 V2.WAV" type="AudioStream" id=5]
 
 [node name="main" type="Node2D"]
 script = ExtResource( 1 )
@@ -27,4 +28,9 @@ size = Vector2( 240, 160 )
 [node name="camera" type="Camera2D" parent="."]
 anchor_mode = 0
 current = true
+
+[node name="backgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -20.0
+autoplay = true
 [connection signal="tween_completed" from="tween" to="." method="_on_tween_tween_completed"]

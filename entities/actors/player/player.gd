@@ -1,6 +1,7 @@
 extends "res://entities/actors/actor.gd"
 
 onready var aliveTimer = $aliveTimer
+onready var ammoWarning = $canvas/warning
 onready var cbox = $canvas/centerBox
 onready var equippedWeapon = $canvas/centerBox/hbox/icon
 onready var equippedWeaponAmmoCount = $canvas/centerBox/hbox/ammo
@@ -104,6 +105,9 @@ func death():
 # Eventually, this will need to support multiple projectile types
 func fire():
 	if inventory[currentWeaponIndex].ammo.count == 0:
+		ammoWarning.visible = true
+		tween.interpolate_property(ammoWarning, "modulate", Color(1,1,1,1), Color(1,1,1,0), 1.5, Tween.TRANS_SINE, Tween.EASE_OUT, 0)
+		tween.start()
 		return
 	.fire()
 

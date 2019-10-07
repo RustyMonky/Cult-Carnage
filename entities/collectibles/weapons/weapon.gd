@@ -7,7 +7,7 @@ var weapons = [
 	{
 		'type': 'test-gun',
 		'ammo': {
-			'count': 10,
+			'count': 20,
 			'type': 'test-projectile'
 		},
 		'texture': 'res://assets/collectibles/weapons/test-gun.png'
@@ -15,7 +15,7 @@ var weapons = [
 	{
 		'type': 'eye-gun',
 		'ammo': {
-			'count': 5,
+			'count': 10,
 			'type': 'eye-projectile'
 		},
 		'texture': 'res://assets/collectibles/weapons/eye-gun.png'
