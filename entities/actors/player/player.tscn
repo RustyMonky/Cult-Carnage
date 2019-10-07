@@ -10,8 +10,8 @@
 [ext_resource path="res://assets/animations/player/fire-eye-gun.tres" type="Animation" id=8]
 [ext_resource path="res://assets/animations/player/fire-test-gun.tres" type="Animation" id=9]
 [ext_resource path="res://assets/animations/player/punch.tres" type="Animation" id=10]
-[ext_resource path="res://assets/sounds/hit.wav" type="AudioStream" id=11]
-[ext_resource path="res://assets/sounds/gun-fire.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/sounds/hit.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/sounds/gun-fire.ogg" type="AudioStream" id=12]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 7.2297
