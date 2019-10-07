@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://levels/title/title.gd" type="Script" id=1]
 [ext_resource path="res://assets/gui/buttons/play-button.png" type="Texture" id=2]
 [ext_resource path="res://assets/gui/buttons/play-button-pressed.png" type="Texture" id=3]
 [ext_resource path="res://assets/gui/buttons/play-button-hover.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/spectre-varaints/header.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/fonts/spectre-varaints/label-16pt.tres" type="DynamicFont" id=6]
 
 [node name="title" type="Control"]
 anchor_right = 1.0
@@ -39,5 +40,21 @@ margin_top = -45.0
 margin_right = 73.0
 margin_bottom = -15.0
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.235294, 0.160784, 0.25098, 1 )
 text = "Cult Carnage"
+
+[node name="help" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -75.5
+margin_top = 26.0
+margin_right = 75.5
+margin_bottom = 41.0
+custom_fonts/font = ExtResource( 6 )
+text = "or press SPACE to begin"
+align = 1
+valign = 1
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
