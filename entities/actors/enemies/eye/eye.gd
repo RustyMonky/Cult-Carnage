@@ -7,12 +7,11 @@ extends "res://entities/actors/enemies/enemy.gd"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	._ready()
-	hp = 4
+	hp = 3
 	speed = 24
 	usedProjectile = "res://entities/projectiles/eye-projectile.tscn"
 	droppedWeapon = "res://entities/collectibles/weapons/weapon.tscn"
 	droppedWeaponType = 'eye-gun'
-	projectileTimer.set_wait_time(5.00)
 
 func death():
 	droppedWeaponType = 'eye-gun'

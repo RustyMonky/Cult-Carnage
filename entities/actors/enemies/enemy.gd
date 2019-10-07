@@ -16,7 +16,7 @@ onready var silhuoette = $silhouette
 
 func _ready():
 	currentState = state.enter
-	hp = 2
+	hp = 1
 	speed = 32
 	usedProjectile = "res://entities/projectiles/projectile.tscn"
 	droppedWeapon = "res://entities/collectibles/weapons/weapon.tscn"

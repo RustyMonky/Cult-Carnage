@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://entities/actors/player/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/actors/player/player-test.png" type="Texture" id=2]
@@ -6,9 +6,10 @@
 [ext_resource path="res://assets/gui/hp/hp-over.png" type="Texture" id=4]
 [ext_resource path="res://assets/gui/hp/hp-progress.png" type="Texture" id=5]
 [ext_resource path="res://assets/gui/equipped/equipped-punch.png" type="Texture" id=6]
-[ext_resource path="res://assets/animations/player/fire-eye-gun.tres" type="Animation" id=7]
-[ext_resource path="res://assets/animations/player/fire-test-gun.tres" type="Animation" id=8]
-[ext_resource path="res://assets/animations/player/punch.tres" type="Animation" id=9]
+[ext_resource path="res://assets/fonts/spectre-varaints/label-16pt.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/animations/player/fire-eye-gun.tres" type="Animation" id=8]
+[ext_resource path="res://assets/animations/player/fire-test-gun.tres" type="Animation" id=9]
+[ext_resource path="res://assets/animations/player/punch.tres" type="Animation" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 7.2297
@@ -50,7 +51,6 @@ enabled = true
 cast_to = Vector2( 16, 0 )
 
 [node name="canvas" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="centerBox" type="MarginContainer" parent="canvas"]
 anchor_top = 1.0
@@ -81,16 +81,17 @@ stretch_mode = 3
 
 [node name="ammo" type="Label" parent="canvas/centerBox/hbox"]
 margin_left = 40.0
-margin_top = 3.0
+margin_top = 2.0
 margin_right = 40.0
 margin_bottom = 17.0
+custom_fonts/font = ExtResource( 7 )
 align = 1
 
 [node name="animationPlayer" type="AnimationPlayer" parent="."]
-anims/fire-eye-gun = ExtResource( 7 )
-anims/fire-test-gun = ExtResource( 8 )
+anims/fire-eye-gun = ExtResource( 8 )
+anims/fire-test-gun = ExtResource( 9 )
 anims/hit = SubResource( 2 )
-anims/punch = ExtResource( 9 )
+anims/punch = ExtResource( 10 )
 
 [node name="aliveTimer" type="Timer" parent="."]
 autostart = true

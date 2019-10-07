@@ -1,6 +1,7 @@
 extends "res://entities/actors/actor.gd"
 
 onready var aliveTimer = $aliveTimer
+onready var cbox = $canvas/centerBox
 onready var equippedWeapon = $canvas/centerBox/hbox/icon
 onready var equippedWeaponAmmoCount = $canvas/centerBox/hbox/ammo
 onready var hpBar = $canvas/centerBox/hbox/hp
@@ -10,6 +11,7 @@ var currentWeaponIndex = 0
 var inventory = [{'type': 'punch'}]
 
 func _ready():
+	cbox.modulate = Color(1, 1, 1, 0.5)
 	speed = 48
 	hp = 5
 	hpBar.max_value = hp
@@ -82,7 +84,8 @@ func addToInventory(weaponData):
 	for weapon in inventory:
 		if weapon.type == weaponData.type:
 			weapon.ammo.count += weaponData.ammo.count
-			equippedWeaponAmmoCount.set_text("x" + String(inventory[currentWeaponIndex].ammo.count))
+			if weaponData.type == inventory[currentWeaponIndex].type:
+				equippedWeaponAmmoCount.set_text("x" + String(inventory[currentWeaponIndex].ammo.count))
 			return
 
 	inventory.append(weaponData)

@@ -2,7 +2,7 @@ extends "res://entities/projectiles/projectile.gd"
 
 func _ready():
 	._ready()
-	speed = 24
+	speed = 16
 
 func _on_eyeprojectile_body_entered(body):
 	body.takeDamage()
