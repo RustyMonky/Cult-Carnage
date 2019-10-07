@@ -105,6 +105,8 @@ margin_right = 240.0
 margin_bottom = 89.0
 custom_fonts/font = ExtResource( 4 )
 text = "Press SPACE to return to title"
+align = 1
+valign = 1
 
 [node name="tween" type="Tween" parent="."]
 [connection signal="tween_completed" from="tween" to="." method="_on_tween_tween_completed"]
