@@ -13,8 +13,8 @@
 [ext_resource path="res://assets/sounds/hit.ogg" type="AudioStream" id=11]
 [ext_resource path="res://assets/sounds/gun-fire.ogg" type="AudioStream" id=12]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 7.2297
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 4.14834, 5.00369 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "hit"
@@ -45,7 +45,8 @@ hframes = 4
 region_rect = Rect2( 10, 10, 0, 0 )
 
 [node name="collider" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+position = Vector2( -1, 0 )
+shape = SubResource( 3 )
 
 [node name="rayPunch" type="RayCast2D" parent="."]
 scale = Vector2( 1, 4 )

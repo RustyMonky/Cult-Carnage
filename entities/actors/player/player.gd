@@ -147,5 +147,6 @@ func takeDamage():
 func _on_aliveTimer_timeout():
 	if gameData.secondsAlive + 1 == 60:
 		gameData.minutesAlive += 1.00
+		gameData.secondsAlive = 0
 	else:
 		gameData.secondsAlive += 1.00
