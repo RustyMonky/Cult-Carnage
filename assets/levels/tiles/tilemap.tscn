@@ -6,16 +6,22 @@
 
 [node name="tile" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-hframes = 3
+hframes = 4
 
 [node name="tile2" type="Sprite" parent="."]
 position = Vector2( 16, 0 )
 texture = ExtResource( 1 )
-hframes = 3
+hframes = 4
 frame = 1
 
 [node name="tile3" type="Sprite" parent="."]
 position = Vector2( 32, 0 )
 texture = ExtResource( 1 )
-hframes = 3
+hframes = 4
 frame = 2
+
+[node name="tile4" type="Sprite" parent="."]
+position = Vector2( 48, 0 )
+texture = ExtResource( 1 )
+hframes = 4
+frame = 3
