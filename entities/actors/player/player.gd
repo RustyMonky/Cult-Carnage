@@ -10,6 +10,7 @@ onready var punchRaycast = $rayPunch
 
 var currentWeaponIndex = 0
 var inventory = [{'type': 'punch'}]
+var viewport
 
 func _ready():
 	cbox.modulate = Color(1, 1, 1, 0.7)
@@ -17,6 +18,9 @@ func _ready():
 	hp = 5
 	hpBar.max_value = hp
 	hpBar.value = hp
+
+	# Assumes viewport exists on parent
+	viewport = get_parent().get_node("viewport")
 
 func _input(event):
 	if hp <= 0:
@@ -61,7 +65,7 @@ func _physics_process(delta):
 		move(delta)
 	elif Input.is_action_pressed("player_down"):
 		direction.y = 1
-		if self.position.y + 8 >= get_parent().get_node("viewport").size.y:
+		if self.position.y + 8 >= viewport.size.y:
 			direction.y = 0
 		move(delta)
 	else:
@@ -74,7 +78,7 @@ func _physics_process(delta):
 		move(delta)
 	elif Input.is_action_pressed("player_right"):
 		direction.x = 1
-		if self.global_position.x + 8 >= get_parent().get_node("viewport").size.x:
+		if self.global_position.x + 8 >= viewport.size.x:
 			direction.x = 0
 		move(delta)
 	else:

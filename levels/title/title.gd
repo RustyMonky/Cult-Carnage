@@ -5,7 +5,7 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("ui_select"):
-		sceneManager.goto_scene("res://levels/info/info.tscn")
+		sceneManager.goto_scene("res://levels/tutorial/tutorial.tscn")
 
 func _on_play_pressed():
-	sceneManager.goto_scene("res://levels/info/info.tscn")
+	sceneManager.goto_scene("res://levels/tutorial/tutorial.tscn")
