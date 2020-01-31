@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://levels/tutorial/tutorial.gd" type="Script" id=1]
 [ext_resource path="res://assets/levels/tiles/tileset.tres" type="TileSet" id=2]
@@ -24,6 +24,8 @@ radius = 5.50583
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 5.36998
+
+[sub_resource type="RichTextEffect" id=7]
 
 [node name="tutorial" type="Node2D"]
 script = ExtResource( 1 )
@@ -124,6 +126,7 @@ custom_fonts/normal_font = ExtResource( 6 )
 bbcode_enabled = true
 bbcode_text = "So ... they nabbed [i]you[/i] too, huh?"
 text = "So ... they nabbed you too, huh?"
+custom_effects = [ SubResource( 7 ) ]
 __meta__ = {
 "_edit_use_anchors_": false
 }
