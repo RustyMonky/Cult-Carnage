@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/gui/buttons/play-button-pressed.png" type="Texture" id=3]
 [ext_resource path="res://assets/gui/buttons/play-button-hover.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/spectre-varaints/header.tres" type="DynamicFont" id=5]
-[ext_resource path="res://assets/fonts/spectre-varaints/label-16pt.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/fonts/spectre-varaints/label-8pt.tres" type="DynamicFont" id=6]
 
 [node name="title" type="Control"]
 anchor_right = 1.0
