@@ -7,6 +7,7 @@ const spriteSize = 16
 var currentState
 var droppedWeapon
 var droppedWeaponType
+var isTutorial = false
 var lastStandingPostion = Vector2()
 var usedProjectile
 
@@ -67,7 +68,7 @@ func _physics_process(delta):
 
 		look_at(get_parent().get_node("player").get_global_position())
 
-		if projectileTimer.is_stopped():
+		if projectileTimer.is_stopped() && !isTutorial:
 			projectileTimer.start()
 
 # Upon timeout, fire a projectile
