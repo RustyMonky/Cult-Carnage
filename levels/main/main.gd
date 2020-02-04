@@ -17,5 +17,5 @@ func screenShake(shakeDuration, power, priority):
 		tween.interpolate_method(self, "moveCamera", Vector2(power, power), Vector2(0,0), shakeDuration, Tween.TRANS_SINE, Tween.EASE_OUT, 0)
 		tween.start()
 
-func _on_tween_tween_completed(object, key):
+func _on_tween_tween_completed(_object, _key):
 	currentShakePriority = 0

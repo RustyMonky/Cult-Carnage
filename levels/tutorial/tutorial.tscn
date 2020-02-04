@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://levels/tutorial/tutorial.gd" type="Script" id=1]
 [ext_resource path="res://assets/levels/tiles/tileset.tres" type="TileSet" id=2]
@@ -28,6 +28,9 @@ radius = 5.36998
 [sub_resource type="RichTextEffect" id=7]
 
 [sub_resource type="RectangleShape2D" id=8]
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 8, 8 )
 
 [node name="tutorial" type="Node2D"]
 script = ExtResource( 1 )
@@ -161,6 +164,13 @@ position = Vector2( 120, 40 )
 
 [node name="doorCollider" type="CollisionShape2D" parent="door"]
 shape = SubResource( 8 )
+
+[node name="exitArea" type="Area2D" parent="."]
+
+[node name="exitCollider" type="CollisionShape2D" parent="exitArea"]
+position = Vector2( 120, 8 )
+shape = SubResource( 9 )
 [connection signal="timeout" from="prisonerTextTimer" to="." method="_on_textTimer_timeout"]
 [connection signal="timeout" from="delayTimer" to="." method="_on_delayTimer_timeout"]
 [connection signal="body_entered" from="door" to="." method="_on_door_body_entered"]
+[connection signal="body_entered" from="exitArea" to="." method="_on_exitArea_body_entered"]

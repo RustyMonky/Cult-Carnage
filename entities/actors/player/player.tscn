@@ -63,7 +63,6 @@ margin_top = -20.0
 margin_right = 40.0
 
 [node name="hbox" type="HBoxContainer" parent="canvas/centerBox"]
-editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 20.0
 

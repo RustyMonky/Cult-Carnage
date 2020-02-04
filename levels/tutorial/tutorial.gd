@@ -40,6 +40,7 @@ func continuePrisonerText():
 		self.add_child(cultist)
 		cultist.position = Vector2(120, 0)
 		cultist.direction = Vector2(0, 1)
+		cultist.connect('tree_exited', self, '_on_cultist_tree_exited')
 
 # Timer for 0.5 second delay on beginning prisoner speech
 func _on_delayTimer_timeout():
@@ -67,3 +68,12 @@ func _on_textTimer_timeout():
 func _on_door_body_entered(body):
 	if body.is_in_group("enemies"):
 		body.setSpeech("What's going on in here!?")
+
+func _on_cultist_tree_exited():
+	textToSpeak = [ "Quick! [shake rate=50 level=5][b]Run for it![/b][/shake]" ]
+	prisonerSpeech.set_bbcode(textToSpeak[textIndex])
+	prisonerTextTimer.start()
+
+func _on_exitArea_body_entered(body):
+	if body.is_in_group("player"):
+		sceneManager.goto_scene("res://levels/main/main.tscn")
