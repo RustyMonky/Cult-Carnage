@@ -9,13 +9,17 @@ var droppedWeapon
 var droppedWeaponType
 var isTutorial = false
 var lastStandingPostion = Vector2()
+var textToSpeak = ''
 var usedProjectile
 
-onready var projectileTimer = $projectileTimer
+onready var delayTimer = $delayTimer
 onready var enemyRay = $enemyRay
 onready var moveTimer = $moveTimer
+onready var projectileTimer = $projectileTimer
 onready var spawnPosition = self.position
+onready var speechLabel = $speechLabel
 onready var silhuoette = $silhouette
+onready var textTimer = $textTimer
 
 func _ready():
 	currentState = state.enter
@@ -102,6 +106,13 @@ func fire():
 	if droppedWeaponType == 'test-gun':
 		animationPlayer.play("test-enemy-fire")
 
+# Publicly accessible function to allow cultists to speak
+func setSpeech(words):
+	speechLabel.visible_characters = 0
+	textToSpeak = words
+	speechLabel.set_bbcode(words)
+	textTimer.start()
+
 # In addition to standard logic, blink the sprite white
 func takeDamage():
 	# Blink white by toggling silhuoette visibility
@@ -113,3 +124,15 @@ func takeDamage():
 func _on_moveTimer_timeout():
 	lastStandingPostion = self.global_position
 	currentState = state.advance
+
+func _on_textTimer_timeout():
+	if speechLabel.visible_characters == textToSpeak.length():
+		textTimer.stop()
+		delayTimer.start()
+	else:
+		speechLabel.visible_characters += 1
+
+func _on_delayTimer_timeout():
+	speechLabel.visible_characters = 0
+	speechLabel.set_text('')
+	delayTimer.stop()

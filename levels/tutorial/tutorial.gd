@@ -1,7 +1,6 @@
 extends "res://levels/main/main.gd"
 
 onready var cultistSpeech = $ui/cultistSpeech
-onready var cultistTextTimer = $cultistTextTimer
 onready var prisonerSpeech = $ui/prisonerSpeech
 onready var prisonerTextTimer = $prisonerTextTimer
 
@@ -64,3 +63,7 @@ func _on_textTimer_timeout():
 		prisonerTextTimer.set_paused(true)
 	else:
 		prisonerSpeech.visible_characters += 1
+
+func _on_door_body_entered(body):
+	if body.is_in_group("enemies"):
+		body.setSpeech("What's going on in here!?")

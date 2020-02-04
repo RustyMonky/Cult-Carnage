@@ -151,9 +151,6 @@ __meta__ = {
 [node name="prisonerTextTimer" type="Timer" parent="."]
 wait_time = 0.05
 
-[node name="cultistTextTimer" type="Timer" parent="."]
-wait_time = 0.05
-
 [node name="delayTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
@@ -165,5 +162,5 @@ position = Vector2( 120, 40 )
 [node name="doorCollider" type="CollisionShape2D" parent="door"]
 shape = SubResource( 8 )
 [connection signal="timeout" from="prisonerTextTimer" to="." method="_on_textTimer_timeout"]
-[connection signal="timeout" from="cultistTextTimer" to="." method="_on_textTimer_timeout"]
 [connection signal="timeout" from="delayTimer" to="." method="_on_delayTimer_timeout"]
+[connection signal="body_entered" from="door" to="." method="_on_door_body_entered"]
