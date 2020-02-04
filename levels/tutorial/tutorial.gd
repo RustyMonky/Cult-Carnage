@@ -16,19 +16,19 @@ func _ready():
 
 func _input(event):
 	if (event.is_action_pressed("player_attack")):
-		if !prisonerTextTimer.is_stopped():
+		if prisonerTextTimer.paused:
 			prisonerSpeech.visible_characters = 0
-			prisonerTextTimer.stop()
+			prisonerTextTimer.set_paused(true)
 			continuePrisonerText()
 
 func continuePrisonerText():
-	if !prisonerTextTimer.is_stopped():
+	if !prisonerTextTimer.paused || spawnCultist:
 		return
 
 	if textIndex + 1 < textToSpeak.size():
 		textIndex += 1
 		prisonerSpeech.set_bbcode(textToSpeak[textIndex])
-		prisonerTextTimer.start()
+		prisonerTextTimer.set_paused(false)
 	else:
 		textToSpeak = []
 		textIndex = 0
@@ -61,6 +61,6 @@ func _on_delayTimer_timeout():
 # Timer for revealing speech characters
 func _on_textTimer_timeout():
 	if prisonerSpeech.visible_characters == textToSpeak[textIndex].length():
-		prisonerTextTimer.stop()
+		prisonerTextTimer.set_paused(true)
 	else:
 		prisonerSpeech.visible_characters += 1
