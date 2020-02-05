@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://levels/tutorial/tutorial.gd" type="Script" id=1]
 [ext_resource path="res://assets/levels/tiles/tileset.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/actors/npc/prisoner/prisoner.png" type="Texture" id=4]
 [ext_resource path="res://assets/actors/npc/prisoner/prisoner-bones.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/spectre-varaints/label-8pt.tres" type="DynamicFont" id=6]
+[ext_resource path="res://entities/props/door.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.10778
@@ -159,10 +160,10 @@ wait_time = 0.5
 one_shot = true
 autostart = true
 
-[node name="door" type="Area2D" parent="."]
+[node name="entryWay" type="Area2D" parent="."]
 position = Vector2( 120, 40 )
 
-[node name="doorCollider" type="CollisionShape2D" parent="door"]
+[node name="entryWayCollider" type="CollisionShape2D" parent="entryWay"]
 shape = SubResource( 8 )
 
 [node name="exitArea" type="Area2D" parent="."]
@@ -170,7 +171,10 @@ shape = SubResource( 8 )
 [node name="exitCollider" type="CollisionShape2D" parent="exitArea"]
 position = Vector2( 120, 8 )
 shape = SubResource( 9 )
+
+[node name="door" parent="." instance=ExtResource( 7 )]
+position = Vector2( 120, 24 )
 [connection signal="timeout" from="prisonerTextTimer" to="." method="_on_textTimer_timeout"]
 [connection signal="timeout" from="delayTimer" to="." method="_on_delayTimer_timeout"]
-[connection signal="body_entered" from="door" to="." method="_on_door_body_entered"]
+[connection signal="body_entered" from="entryWay" to="." method="_on_entryWay_body_entered"]
 [connection signal="body_entered" from="exitArea" to="." method="_on_exitArea_body_entered"]

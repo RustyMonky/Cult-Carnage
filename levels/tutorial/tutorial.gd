@@ -1,6 +1,7 @@
 extends "res://levels/main/main.gd"
 
 onready var cultistSpeech = $ui/cultistSpeech
+onready var door = $door
 onready var prisonerSpeech = $ui/prisonerSpeech
 onready var prisonerTextTimer = $prisonerTextTimer
 
@@ -65,7 +66,7 @@ func _on_textTimer_timeout():
 	else:
 		prisonerSpeech.visible_characters += 1
 
-func _on_door_body_entered(body):
+func _on_entryWay_body_entered(body):
 	if body.is_in_group("enemies"):
 		body.setSpeech("What's going on in here!?")
 
@@ -77,3 +78,5 @@ func _on_cultist_tree_exited():
 func _on_exitArea_body_entered(body):
 	if body.is_in_group("player"):
 		sceneManager.goto_scene("res://levels/main/main.tscn")
+	elif body.is_in_group("enemies"):
+		door.queue_free()
