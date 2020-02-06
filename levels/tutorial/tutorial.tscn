@@ -165,12 +165,14 @@ position = Vector2( 120, 40 )
 
 [node name="entryWayCollider" type="CollisionShape2D" parent="entryWay"]
 shape = SubResource( 8 )
+one_way_collision = true
 
 [node name="exitArea" type="Area2D" parent="."]
 
 [node name="exitCollider" type="CollisionShape2D" parent="exitArea"]
 position = Vector2( 120, 8 )
 shape = SubResource( 9 )
+one_way_collision = true
 
 [node name="door" parent="." instance=ExtResource( 7 )]
 position = Vector2( 120, 24 )

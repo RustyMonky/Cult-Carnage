@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/fonts/spectre-varaints/label-8pt.tres" type="DynamicFont" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5.9958, 6.02329 )
+extents = Vector2( 5.9958, 3.98807 )
 
 [node name="enemy" type="KinematicBody2D" groups=[
 "enemies",
