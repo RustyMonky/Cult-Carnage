@@ -32,6 +32,6 @@ func fire():
 func _on_projectileTimer_timeout():
 	fire()
 
-func _on_animationPlayer_animation_finished(anim_name):
+func _on_animationPlayer_animation_finished(_anim_name):
 	animationPlayer.stop()
 	sprite.set_frame(0)

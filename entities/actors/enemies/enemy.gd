@@ -81,16 +81,17 @@ func _on_projectileTimer_timeout():
 
 # Enemy death logic, which can contain item drops or hazards
 func death():
-	randomize()
+	if (!isTutorial):
+		randomize()
 
-	var randomChance = int(rand_range(0, 2))
-	if randomChance > 0:
-		var weaponToDrop = load(droppedWeapon).instance()
-		weaponToDrop.type = droppedWeaponType
-		weaponToDrop.global_position = self.global_position
-		get_parent().call_deferred('add_child', weaponToDrop)
+		var randomChance = int(rand_range(0, 2))
+		if randomChance > 0:
+			var weaponToDrop = load(droppedWeapon).instance()
+			weaponToDrop.type = droppedWeaponType
+			weaponToDrop.global_position = self.global_position
+			get_parent().call_deferred('add_child', weaponToDrop)
 
-	gameData.enemiesKilled += 1
+		gameData.enemiesKilled += 1
 	.death()
 
 func fire():
