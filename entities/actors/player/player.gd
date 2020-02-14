@@ -132,6 +132,8 @@ func fire():
 
 	animationPlayer.play("fire-" + inventory[currentWeaponIndex].type)
 
+	get_parent().screenShake(0.25, 0.5, 50)
+
 func swapWeapons():
 	var weaponTexture = load("res://assets/gui/equipped/equipped-" + inventory[currentWeaponIndex].type + ".png")
 	equippedWeapon.set_texture(weaponTexture)
