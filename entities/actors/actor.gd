@@ -18,7 +18,7 @@ func _ready():
 	set_physics_process(true)
 	set_process_input(true)
 
-func _on_animationPlayer_animation_finished(anim_name):
+func _on_animationPlayer_animation_finished(_anim_name):
 	animationPlayer.stop()
 
 # Generic death logic for actors
@@ -36,7 +36,7 @@ func fire():
 
 # Generic movement logic for actors
 func move(delta):
-	var collision = self.move_and_collide(direction.normalized() * (speed * delta))
+	var _collision = self.move_and_collide(direction.normalized() * (speed * delta))
 
 # Generic logic for actors to receive damage
 func takeDamage():
