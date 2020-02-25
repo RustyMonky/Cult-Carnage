@@ -1,198 +1,233 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/levels/tiles/tiles.png" type="Texture" id=1]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 1.9635, 7.99407 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8.04361, 4.14037 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 2.03749, 8.0451 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 8.04715, 3.18755 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 2.44713, 9.91525 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 1.39726, 3.44896 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 1.67876, 3.50317 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 2.00704, 10 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 8, 7.84624 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 8, 8 )
 
 [node name="tilemap" type="Node2D"]
 
-[node name="tile" type="Sprite" parent="."]
+[node name="prisonFloor1" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 
-[node name="tile2" type="Sprite" parent="."]
+[node name="prisonFloor2" type="Sprite" parent="."]
 position = Vector2( 16, 0 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 frame = 1
 
-[node name="tile3" type="Sprite" parent="."]
+[node name="prisonFloor3" type="Sprite" parent="."]
 position = Vector2( 32, 0 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 frame = 2
 
-[node name="tile4" type="Sprite" parent="."]
+[node name="void" type="Sprite" parent="."]
 position = Vector2( 48, 0 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 frame = 3
 
-[node name="tile5" type="Sprite" parent="."]
+[node name="wallSideLeft" type="Sprite" parent="."]
 position = Vector2( 0, 16 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 frame = 4
 
-[node name="body" type="StaticBody2D" parent="tile5"]
+[node name="body" type="StaticBody2D" parent="wallSideLeft"]
 
-[node name="collider" type="CollisionShape2D" parent="tile5/body"]
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wallSideLeft/body"]
+position = Vector2( 6.04835, 0 )
+shape = SubResource( 2 )
 
-[node name="tile6" type="Sprite" parent="."]
+[node name="wallTop" type="Sprite" parent="."]
 position = Vector2( 16, 16 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 frame = 5
 
-[node name="body" type="StaticBody2D" parent="tile6"]
+[node name="body" type="StaticBody2D" parent="wallTop"]
 
-[node name="collider" type="CollisionShape2D" parent="tile6/body"]
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wallTop/body"]
+position = Vector2( 0, 4.11927 )
+shape = SubResource( 3 )
 
-[node name="tile7" type="Sprite" parent="."]
+[node name="wallSideRight" type="Sprite" parent="."]
 position = Vector2( 32, 16 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 frame = 6
 
-[node name="body" type="StaticBody2D" parent="tile7"]
+[node name="body" type="StaticBody2D" parent="wallSideRight"]
 position = Vector2( -16, 0 )
 
-[node name="collider" type="CollisionShape2D" parent="tile7/body"]
-position = Vector2( 16, 0 )
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wallSideRight/body"]
+position = Vector2( 10.0407, 0 )
+shape = SubResource( 4 )
 
-[node name="tile8" type="Sprite" parent="."]
+[node name="wallBottom" type="Sprite" parent="."]
 position = Vector2( 48, 16 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 frame = 7
 
-[node name="body" type="StaticBody2D" parent="tile8"]
+[node name="body" type="StaticBody2D" parent="wallBottom"]
 position = Vector2( -32, 0 )
 
-[node name="collider" type="CollisionShape2D" parent="tile8/body"]
-position = Vector2( 32, 0 )
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wallBottom/body"]
+position = Vector2( 32.0033, 4.11927 )
+shape = SubResource( 5 )
 
-[node name="tile9" type="Sprite" parent="."]
+[node name="wallCornerBotLeft" type="Sprite" parent="."]
 position = Vector2( 0, 32 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 frame = 8
 
-[node name="body" type="StaticBody2D" parent="tile9"]
+[node name="body" type="StaticBody2D" parent="wallCornerBotLeft"]
 position = Vector2( 16, -16 )
 
-[node name="collider" type="CollisionShape2D" parent="tile9/body"]
-position = Vector2( -16, 16 )
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wallCornerBotLeft/body"]
+position = Vector2( -9.95165, 17.8398 )
+shape = SubResource( 6 )
 
-[node name="tile10" type="Sprite" parent="."]
+[node name="wallCornerTopLeft" type="Sprite" parent="."]
 position = Vector2( 16, 32 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 frame = 9
 
-[node name="body" type="StaticBody2D" parent="tile10"]
+[node name="body" type="StaticBody2D" parent="wallCornerTopLeft"]
 position = Vector2( 0, -16 )
 
-[node name="collider" type="CollisionShape2D" parent="tile10/body"]
-position = Vector2( 0, 16 )
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wallCornerTopLeft/body"]
+position = Vector2( 6.29536, 20.486 )
+shape = SubResource( 7 )
 
-[node name="tile11" type="Sprite" parent="."]
+[node name="wallCornerTopRight" type="Sprite" parent="."]
 position = Vector2( 32, 32 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 frame = 10
 
-[node name="body" type="StaticBody2D" parent="tile11"]
+[node name="body" type="StaticBody2D" parent="wallCornerTopRight"]
 position = Vector2( -16, -16 )
 
-[node name="collider" type="CollisionShape2D" parent="tile11/body"]
-position = Vector2( 16, 16 )
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wallCornerTopRight/body"]
+position = Vector2( 9.3532, 20.486 )
+shape = SubResource( 8 )
 
-[node name="tile12" type="Sprite" parent="."]
+[node name="wallCornerBotRight" type="Sprite" parent="."]
 position = Vector2( 48, 32 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 frame = 11
 
-[node name="body" type="StaticBody2D" parent="tile12"]
+[node name="body" type="StaticBody2D" parent="wallCornerBotRight"]
 position = Vector2( -32, -16 )
 
-[node name="collider" type="CollisionShape2D" parent="tile12/body"]
-position = Vector2( 32, 16 )
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wallCornerBotRight/body"]
+position = Vector2( 25.8194, 17.8398 )
+shape = SubResource( 9 )
 
-[node name="tile13" type="Sprite" parent="."]
+[node name="wallTurnTopLeft" type="Sprite" parent="."]
 position = Vector2( 0, 48 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 frame = 12
 
-[node name="body" type="StaticBody2D" parent="tile13"]
+[node name="body" type="StaticBody2D" parent="wallTurnTopLeft"]
 position = Vector2( 16, -32 )
 
-[node name="collider" type="CollisionShape2D" parent="tile13/body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wallTurnTopLeft/body"]
 position = Vector2( -16, 32 )
-shape = SubResource( 1 )
+shape = SubResource( 10 )
 
-[node name="tile14" type="Sprite" parent="."]
+[node name="wallTurnTopRight" type="Sprite" parent="."]
 position = Vector2( 16, 48 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 frame = 13
 
-[node name="body" type="StaticBody2D" parent="tile14"]
+[node name="body" type="StaticBody2D" parent="wallTurnTopRight"]
 position = Vector2( 0, -32 )
 
-[node name="collider" type="CollisionShape2D" parent="tile14/body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wallTurnTopRight/body"]
 position = Vector2( 0, 32 )
-shape = SubResource( 1 )
+shape = SubResource( 11 )
 
-[node name="tile15" type="Sprite" parent="."]
+[node name="wall" type="Sprite" parent="."]
 position = Vector2( 32, 48 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 frame = 14
 
-[node name="body" type="StaticBody2D" parent="tile15"]
+[node name="body" type="StaticBody2D" parent="wall"]
 position = Vector2( -16, -32 )
 
-[node name="collider" type="CollisionShape2D" parent="tile15/body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/body"]
 position = Vector2( 16, 32 )
-shape = SubResource( 1 )
+shape = SubResource( 12 )
 
-[node name="tile16" type="Sprite" parent="."]
+[node name="wall2" type="Sprite" parent="."]
 position = Vector2( 48, 48 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 frame = 15
 
-[node name="body" type="StaticBody2D" parent="tile16"]
+[node name="body" type="StaticBody2D" parent="wall2"]
 position = Vector2( -32, -32 )
 
-[node name="collider" type="CollisionShape2D" parent="tile16/body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2/body"]
 position = Vector2( 32, 32 )
-shape = SubResource( 1 )
+shape = SubResource( 13 )
