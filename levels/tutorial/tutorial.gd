@@ -2,7 +2,8 @@ extends "res://levels/main/main.gd"
 
 onready var cultistSpeech = $ui/cultistSpeech
 onready var door = $door
-onready var prisonerSpeech = $ui/prisonerSpeech
+onready var prisonerSpeech = $ui/prisonerSpeechBubble/prisonerSpeech
+onready var prisonerSpeechBubble = $ui/prisonerSpeechBubble
 onready var prisonerTextTimer = $prisonerTextTimer
 
 var cultist
@@ -33,6 +34,7 @@ func continuePrisonerText():
 		textToSpeak = []
 		textIndex = 0
 		prisonerSpeech.set_bbcode("")
+		prisonerSpeechBubble.hide()
 
 		# The insructions are complete -- spawn our first cultist
 		spawnCultist = true
@@ -58,6 +60,7 @@ func _on_delayTimer_timeout():
 	]
 	prisonerSpeech.set_bbcode(textToSpeak[textIndex])
 	prisonerTextTimer.start()
+	prisonerSpeechBubble.show()
 
 # Timer for revealing speech characters
 func _on_textTimer_timeout():
