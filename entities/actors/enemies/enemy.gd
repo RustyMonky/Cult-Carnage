@@ -17,7 +17,7 @@ onready var enemyRay = $enemyRay
 onready var moveTimer = $moveTimer
 onready var projectileTimer = $projectileTimer
 onready var spawnPosition = self.position
-onready var speechLabel = $speechLabel
+onready var speechLabel = $canvas/speechLabel
 onready var silhuoette = $silhouette
 onready var textTimer = $textTimer
 

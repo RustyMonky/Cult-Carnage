@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://levels/tutorial/tutorial.gd" type="Script" id=1]
 [ext_resource path="res://assets/levels/tiles/tileset.tres" type="TileSet" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/fonts/spectre-varaints/label-8pt.tres" type="DynamicFont" id=6]
 [ext_resource path="res://entities/props/door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/gui/speech/prisoner-speech.png" type="Texture" id=8]
+[ext_resource path="res://assets/fonts/hungry-variants/8-pt.tres" type="DynamicFont" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.10778
@@ -123,6 +124,7 @@ __meta__ = {
 
 [node name="prisonerSpeechBubble" type="TextureRect" parent="ui"]
 visible = false
+modulate = Color( 1, 1, 1, 0.74902 )
 margin_left = 30.0
 margin_top = 45.8067
 margin_right = 126.0
@@ -139,28 +141,18 @@ margin_top = 2.0
 margin_right = 94.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 48, 0 )
-custom_fonts/italics_font = ExtResource( 6 )
-custom_fonts/bold_font = ExtResource( 6 )
+size_flags_horizontal = 5
+size_flags_vertical = 5
+custom_fonts/italics_font = ExtResource( 9 )
+custom_fonts/bold_font = ExtResource( 9 )
 custom_fonts/normal_font = ExtResource( 6 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.121569, 0.0941176, 0.2, 1 )
 bbcode_enabled = true
 bbcode_text = "So ... they nabbed [i]you[/i] too, huh?"
+tab_size = 2
 text = "So ... they nabbed you too, huh?"
-custom_effects = [ SubResource( 7 ) ]
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="cultistSpeech" type="RichTextLabel" parent="ui"]
-margin_left = 74.0941
-margin_top = 45.8067
-margin_right = 170.094
-margin_bottom = 69.8067
-rect_min_size = Vector2( 48, 0 )
-custom_fonts/italics_font = ExtResource( 6 )
-custom_fonts/bold_font = ExtResource( 6 )
-custom_fonts/normal_font = ExtResource( 6 )
-bbcode_enabled = true
+scroll_active = false
 custom_effects = [ SubResource( 7 ) ]
 __meta__ = {
 "_edit_use_anchors_": false

@@ -1,6 +1,5 @@
 extends "res://levels/main/main.gd"
 
-onready var cultistSpeech = $ui/cultistSpeech
 onready var door = $door
 onready var prisonerSpeech = $ui/prisonerSpeechBubble/prisonerSpeech
 onready var prisonerSpeechBubble = $ui/prisonerSpeechBubble
@@ -52,9 +51,9 @@ func _on_delayTimer_timeout():
 		"So ... they nabbed [i]you[/i] too, huh?",
 		"Those [b]damn[/b] cultists.",
 		"I'm done for, but maybe I can help you escape!",
-		"Move around with the W,A,S, and D keys.",
+		"Move around with the W, A, S, and D keys.",
 		"Aim with your mouse.",
-		"Attack, click buttons, and cycle through text by left clicking.",
+		"Attack and cycle through text by clicking your left mouse button.",
 		"Now, get ready, I'm gonna give you an openin'.",
 		"[shake rate=50 level=5][b]AT LAST, I'M FREEEEE![/b][/shake]"
 	]
@@ -71,13 +70,14 @@ func _on_textTimer_timeout():
 
 func _on_entryWay_body_entered(body):
 	if body.is_in_group("enemies"):
-		body.setSpeech("What's going on in here!?")
+		body.setSpeech("Silence, rabble!")
 
 func _on_enemy_tree_exited():
 	textToSpeak = [ "Quick! [shake rate=50 level=5][b]Run for it![/b][/shake]" ]
 	prisonerSpeech.set_bbcode(textToSpeak[textIndex])
 	prisonerTextTimer.start()
 	prisonerTextTimer.set_paused(false)
+	prisonerSpeechBubble.show()
 
 func _on_exitArea_body_entered(body):
 	if body.is_in_group("player"):
