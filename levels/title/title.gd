@@ -5,7 +5,12 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("ui_select"):
-		sceneManager.goto_scene("res://levels/tutorial/tutorial.tscn")
+		fade()
 
 func _on_play_pressed():
-	sceneManager.goto_scene("res://levels/tutorial/tutorial.tscn")
+	fade()
+
+func fade():
+	var fader = load("res://utility/fader/fader.tscn").instance()
+	self.add_child(fader)
+	fader.fade("res://levels/tutorial/tutorial.tscn")
