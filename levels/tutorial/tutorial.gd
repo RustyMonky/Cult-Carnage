@@ -81,6 +81,6 @@ func _on_enemy_tree_exited():
 
 func _on_exitArea_body_entered(body):
 	if body.is_in_group("player"):
-		sceneManager.goto_scene("res://levels/main/main.tscn")
+		sceneManager.goto_room()
 	elif body.is_in_group("enemies"):
 		door.queue_free()
