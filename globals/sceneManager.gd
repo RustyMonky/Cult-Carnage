@@ -3,7 +3,8 @@ extends Node
 var current_scene = null
 
 var rooms = [
-	"res://levels/main/rooms/box.tscn"
+	"res://levels/main/rooms/box.tscn",
+	"res://levels/main/rooms/corridor.tscn"
 ]
 
 func _ready():
@@ -11,7 +12,7 @@ func _ready():
 	current_scene = root.get_child(root.get_child_count() - 1)
 
 func goto_room():
-	var room = rooms[0]; # This is test code -- update to randomly select a room later!
+	var room = rooms[randi() % (rooms.size() - 1)]
 	goto_scene(room)
 
 func goto_scene(path):
